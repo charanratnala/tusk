@@ -7,8 +7,7 @@ import com.lhs.entity.Roles;
 
 @Repository
 public interface Rolerepo extends CrudRepository<Roles, Integer> {
-	
-	
+
 	Roles findByRolename(String rolename);
 
 }
