@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,22 +15,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lhs.customexception.GlobalExceptionHandler;
 import com.lhs.dao.RegistrationRepo;
-import com.lhs.entity.JWTUtility;
-import com.lhs.entity.JwtRequest;
-import com.lhs.entity.JwtResponse;
-import com.lhs.entity.RegistrationDto;
+import com.lhs.dto.RegistrationDto;
 import com.lhs.entity.RegistrationEntity;
 import com.lhs.security.ImplementationUserDetailsService;
+import com.lhs.security.JWTUtility;
+import com.lhs.security.JwtRequest;
+import com.lhs.security.JwtResponse;
 import com.lhs.service.RegistrationService;
 
 @RestController
 @RequestMapping("/api")
-//@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000")
 public class RegistrationController {
 
 	@Autowired
@@ -51,7 +51,7 @@ public class RegistrationController {
 
 	@PostMapping("/check")
 	public String home() {
-		logger.info("checking html page ");
+		logger.info("checking  page  ");
 		return "Hii Dude";
 	}
 
@@ -76,7 +76,7 @@ public class RegistrationController {
 		}
 
 		service.addAccount(register);
-		logger.info("account saved in the database sucessfull");
+		logger.info("account saved in the database sucessfully");
 
 		return ResponseEntity.ok("added account sucessfully " + register.getUsername());
 
@@ -111,5 +111,28 @@ public class RegistrationController {
 		return entity;
 
 	}
+	
+	
+	@PostMapping("/ifconditionlogin")
+	public ResponseEntity<?> login(@RequestBody RegistrationEntity details) {
+		String email = details.getUsername();
+		String password = details.getPassword();
+		//log.info(email + " " + password); 
+		
+            java.util.Optional<RegistrationEntity> t=registrationRepo.findByUsernameAndPassword(email, password);
+		//Optional<RegistrationEntity> patient = registrationRepo.findByEmailAndPassword(email, password);
+		//Optional<Doctor> doctor = doctorService.findByEmailAndPassword(email, password);
+		
+	
+	if (t.isPresent()) {
+			return new ResponseEntity<RegistrationEntity>(HttpStatus.OK);
+		}
+		
+	else
+		return new ResponseEntity<>("login failed ! please login with valid credentials..", HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	
 
 }

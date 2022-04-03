@@ -1,4 +1,4 @@
-package com.lhs.entity;
+package com.lhs.dto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,18 @@ public class RegistrationDto {
 	private String username;
 	@Size(min = 8, message = "u must enter min 8 characters.....")
 	private String password;
+	private String dob;
+
+	private String gender;
+	private long mobileno;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	List<Roles> role=  new ArrayList<>();
+	private String rolen;
+	
+	
+	
+	
+	
 
 	public String getFirstname() {
 		return firstname;
@@ -63,12 +75,6 @@ public class RegistrationDto {
 	public void setMobileno(long mobileno) {
 		this.mobileno = mobileno;
 	}
-	private String dob;
-
-	private String gender;
-	private long mobileno;
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	List<Roles> role=  new ArrayList<>();
 	
 	public List<Roles> getRole() {
 		return role;
@@ -82,7 +88,7 @@ public class RegistrationDto {
 	public void setRolen(String rolen) {
 		this.rolen = rolen;
 	}
-	private String rolen;
+	
 
 	
 }

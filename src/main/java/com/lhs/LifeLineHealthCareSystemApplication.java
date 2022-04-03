@@ -12,9 +12,6 @@ public class LifeLineHealthCareSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LifeLineHealthCareSystemApplication.class, args);
 
-		// nrew vcjd
-		// new change in master
-
 	}
 
 	@Bean

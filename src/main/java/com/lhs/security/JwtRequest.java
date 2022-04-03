@@ -1,4 +1,4 @@
-package com.lhs.entity;
+package com.lhs.security;
 
 public class JwtRequest {
 
@@ -15,7 +15,8 @@ public class JwtRequest {
 		this.password = password;
 		this.username = username;
 	}
-
+	
+	
 	public String getUsername() {
 		return username;
 	}

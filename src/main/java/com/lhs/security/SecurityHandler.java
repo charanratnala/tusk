@@ -13,8 +13,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.lhs.entity.JwtFilter;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityHandler extends WebSecurityConfigurerAdapter {

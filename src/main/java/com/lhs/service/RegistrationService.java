@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.lhs.customexception.GlobalExceptionHandler;
 import com.lhs.dao.RegistrationRepo;
 import com.lhs.dao.Rolerepo;
-import com.lhs.entity.RegistrationDto;
+import com.lhs.dto.RegistrationDto;
 import com.lhs.entity.RegistrationEntity;
 import com.lhs.entity.Roles;
 
@@ -46,7 +46,22 @@ public class RegistrationService implements RegistrationServiceInterface {
 		entity.setRole(new ArrayList<Roles>());
 		entity.getRole().add(r);
 		repo.save(entity);
+	
+		
 
 	}
 
+	public int add(int i,int b)
+	{
+		RegistrationEntity entity = new RegistrationEntity();
+
+		if(i==0)
+		throw new RuntimeException("cc");
+		else
+			
+			
+			repo.save(entity);
+		return 0;
+		
+	}
 }

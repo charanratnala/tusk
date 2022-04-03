@@ -2,7 +2,6 @@ package com.lhs.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.lhs.entity.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,10 +17,21 @@ public class RegistrationEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String firstname;
 
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	List<Roles> role=  new ArrayList<>();
-	
+	private String lastname;
+	private String username;
+	private String password;
+
+	private String dob;
+
+	private String gender;
+
+	private long mobileno;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	List<Roles> role = new ArrayList<>();
+
 	private String rolen;
 //	
 //	public List<Roles> getRole() {
@@ -111,17 +121,5 @@ public class RegistrationEntity {
 	public void setMobileno(long mobileno) {
 		this.mobileno = mobileno;
 	}
-
-	private String firstname;
-
-	private String lastname;
-	private String username;
-	private String password;
-
-	private String dob;
-
-	private String gender;
-
-	private long mobileno;
 
 }

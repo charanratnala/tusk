@@ -1,4 +1,4 @@
-package com.lhs.entity;
+package com.lhs.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

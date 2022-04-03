@@ -1,6 +1,6 @@
 package com.lhs.service;
 
-import com.lhs.entity.RegistrationDto;
+import com.lhs.dto.RegistrationDto;
 
 public interface RegistrationServiceInterface {
 

@@ -1,13 +1,9 @@
 package com.lhs.entity;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Roles {
@@ -17,9 +13,6 @@ public class Roles {
 	private int id;
 
 	private String rolename;
-
-//	@ManyToOne(cascade = CascadeType.MERGE)
-//	List<RegistrationEntity> registerentity;
 
 	public int getId() {
 		return id;

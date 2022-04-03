@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.slf4j.*;
 
 @ControllerAdvice
 public class GlobalException extends ResponseEntityExceptionHandler {
 
+	Logger logger = LoggerFactory.getLogger(GlobalException.class);
+
 	@ExceptionHandler(GlobalExceptionHandler.class)
 	public ResponseEntity<String> handle(GlobalExceptionHandler error) {
-
+		logger.info("Global exceptional handler method called");
 		return new ResponseEntity<String>("already username exists", HttpStatus.BAD_REQUEST);
 
 	}
